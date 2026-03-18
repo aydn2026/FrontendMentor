@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Car Categories | Sedans, SUVs & Luxury Vehicles</title>
+    <meta name="description" content="Explore our range of sedans, SUVs, and luxury cars. Find the perfect vehicle with comfort, performance, and affordability.">
+    <meta name="keywords" content="cars, sedans, SUVs, luxury cars, vehicles, car rental">
+    <meta name="author" content="Aydn">
+
+    <meta property="og:title" content="Car Categories | Sedans, SUVs & Luxury Vehicles">
+    <meta property="og:description" content="Discover sedans, SUVs, and luxury cars with excellent performance and comfort.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="preview.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Car Categories | Sedans, SUVs & Luxury Vehicles">
+    <meta name="twitter:description" content="Explore sedans, SUVs, and luxury cars.">
+    <meta name="twitter:image" content="preview.jpg">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,700&family=Lexend+Deca&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "Product",
+          "name": "Sedans",
+          "description": "Affordable and fuel-efficient cars"
+        },
+        {
+          "@type": "Product",
+          "name": "SUVs",
+          "description": "Spacious and powerful vehicles"
+        },
+        {
+          "@type": "Product",
+          "name": "Luxury Cars",
+          "description": "Premium comfort and style"
+        }
+      ]
+    }
+    </script>
+
+    <style>
+      :root {
+        --color-cyan-800: hsl(184, 100%, 22%);
+        --color-gold-500: hsl(31, 77%, 52%);
+        --color-gray-100: hsl(0, 0%, 95%);
+        --color-green-950: hsl(179, 100%, 13%);
+        --color-transparent-white: hsla(0, 0%, 100%, 0.75);
+
+        --font-base: 'Lexend Deca', sans-serif;
+        --font-display: 'Big Shoulders', sans-serif;
+
+        --text-regular: 400;
+        --text-bold: 700;
+
+        --transition: background-color 200ms ease-out;
+      }
+      
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--color-gray-100);
+        font-family: var(--font-base);
+        font-size: .9375rem;
+        font-weight: var(--text-regular);
+        line-height: 1.6;
+        padding: 5.5rem 1.5rem;
+      }
+
+      img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+        object-fit: cover;
+        user-select: none;
+      }
+
+      .sr-only {
+        border: none;
+        clip: rect(0, 0, 0, 0);
+        clip-path: inset(50%);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+
+      .cards {
+        border-radius: .5rem;
+        overflow: hidden;
+      }
+
+      .card {
+        background-color: var(--background);
+        color: var(--color-transparent-white);
+        padding: 3rem;
+      }
+
+      .card--first {
+        --background: var(--color-gold-500);
+      }
+
+      .card--secondary {
+        --background: var(--color-cyan-800);
+      }
+
+      .card--third {
+        --background: var(--color-green-950);
+      }
+
+      .card__image {
+        margin-bottom: 2.375rem;
+      }
+
+      .card__title {
+        color: var(--color-gray-100);
+        font-family: var(--font-display);
+        font-size: 2.25rem;
+        line-height: 1.15;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+      }
+
+      .card__description {
+        margin-bottom: 1.6875rem;
+      }
+
+      .card__button {
+        border: .125rem solid var(--color-gray-100);
+        border-radius: 1.5rem;
+        background-color: var(--color-gray-100);
+        color: var(--background);
+        display: inline-block;
+        font-size: 1rem;
+        padding: .5625rem 1.6875rem;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+      .card__button:focus-visible {
+        outline: .125rem dashed var(--color-gray-100);
+        outline-offset: .25rem;
+      }
+      .card__button:hover {
+        background: var(--background);
+        color: var(--color-gray-100);
+      }
+
+      @media (min-width: 62rem) {
+        body {
+          padding-bottom: 8.0625rem;
+          padding-top: 10.6875rem;
+        }
+
+        .cards {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 57.5rem;
+        }
+
+        .card__description {
+          margin-bottom: 5.3125rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        :root {
+          --transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <main class="cards">
+      <h1 class="sr-only">3-column preview card component</h1>
+    
+      <article class="card card--first">
+        <img
+          alt="Sedans car icon"
+          class="card__image"
+          decoding="async"
+          draggable="false"
+          loading="lazy"
+          src="images/icon-sedans.svg"
+        >
+        <h2 class="card__title">Sedans</h2>
+        <p class="card__description">
+          Choose a sedan for its affordability and excellent fuel economy. Ideal for cruising in the city 
+          or on your next road trip.
+        </p>
+        <a
+          aria-label="Learn more about Sedans"
+          class="card__button"
+          href="#"
+        >
+          Learn More
+        </a>
+      </article>
+    
+
+      <article class="card card--secondary">
+        <img
+          alt="SUVs car icon"
+          class="card__image"
+          decoding="async"
+          draggable="false"
+          loading="lazy"
+          src="images/icon-suvs.svg"
+        >
+        <h2 class="card__title">SUVs</h2>
+        <p class="card__description">
+          Take an SUV for its spacious interior, power, and versatility. Perfect for your next family vacation 
+          and off-road adventures.
+        </p>
+        <a
+          aria-label="Learn more about SUVs"
+          class="card__button"
+          href="#"
+        >
+          Learn More
+        </a>
+      </article>
+    
+      <article class="card card--third">
+        <img
+          alt="Luxury car icon"
+          class="card__image"
+          decoding="async"
+          draggable="false"
+          loading="lazy"
+          src="images/icon-luxury.svg"
+        >
+        <h2 class="card__title">Luxury</h2>
+        <p class="card__description">
+          Cruise in the best car brands without the bloated prices. Enjoy the enhanced comfort of a luxury 
+          rental and arrive in style.
+        </p>
+        <a
+          aria-label="Learn more about Luxury"
+          class="card__button"
+          href="#"
+        >
+          Learn More
+        </a>
+      </article>
+    </main>
+  </body>
+</html>
