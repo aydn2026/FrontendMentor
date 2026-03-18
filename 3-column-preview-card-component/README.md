@@ -29,8 +29,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Your Solution URL](https://your-solution-url.com)  
-- Live Site URL: [Live Demo](https://your-live-site-url.com)  
+- Solution URL: [Solution URL](https://github.com/aydn2026/FrontendMentor/tree/main/3-column-preview-card-component)  
+- Live Site URL: [Live Demo](https://aydn2026.github.io/FrontendMentor/3-column-preview-card-component)  
 
 ## My Process
 
