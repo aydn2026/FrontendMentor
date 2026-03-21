@@ -25,8 +25,8 @@ Users should be able to:
 
 ### Links
 
-* **Solution URL:** [https://your-solution-url.com](https://your-solution-url.com)
-* **Live Site URL:** [https://your-live-site-url.com](https://your-live-site-url.com)
+* **Solution URL:** [https://github.com/aydn2026/FrontendMentor/tree/main/advice-generator-app](https://github.com/aydn2026/FrontendMentor/tree/main/advice-generator-app)
+* **Live Site URL:** [https://aydn2026.github.io/FrontendMentor/advice-generator-app](https://aydn2026.github.io/FrontendMentor/advice-generator-app)
 
 ---
 
