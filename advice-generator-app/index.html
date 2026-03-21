@@ -2,27 +2,385 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Advice generator app</title>
+  <title>Advice Generator App | Get Random Advice Instantly</title>
+  <meta name="description" content="Generate random pieces of advice instantly with this simple and fast advice generator app. Click the button to receive helpful tips and guidance.">
+  <meta name="keywords" content="advice generator, random advice, life tips, advice app, motivational advice">
+  <meta name="author" content="Frontend Mentor">
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://aydn2026.github.io/FrontendMentor/advice-generator-app">
+
+  <meta property="og:title" content="Advice Generator App">
+  <meta property="og:description" content="generate random advice instantly. Simple, fast, and helpful.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aydn2026.github.io/FrontendMentor/advice-generator-app">
+  <meta property="og:image" content="https://aydn2026.github.io/FrontendMentor/advice-generator-app/preview.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advice Generator App">
+  <meta name="twitter:description" content="Generate random advice with one click.">
+  <meta name="twitter:image" content="preview.png">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Advice Generator App",
+    "url": "https://aydn2026.github.io/FrontendMentor/advice-generator-app",
+    "description": "A simple web app that generates random advice.",
+    "applicationCategory": "Utilities",
+    "operatingSystem": "All"
+  }
+  </script>
+
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+    :root {
+      --color-blue-200: hsl(193, 38%, 86%);
+      --color-blue-600: hsl(217, 19%, 38%);
+      --color-blue-900: hsl(217, 19%, 24%);
+      --color-blue-950: hsl(218, 23%, 16%);
+      --color-error: hsl(0, 80%, 60%);
+      --color-green-300: hsl(150, 100%, 66%);
+
+      --font-base: 'Manrope', sans-serif;
+      --text-extrabold: 800;
+
+      --transition: box-shadow 200ms ease-out;
+    }
+
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: var(--color-blue-950);
+      color: var(--color-blue-200);
+      font-family: var(--font-base);
+      font-weight: var(--text-extrabold);
+      line-height: 1.43;
+      padding: 13.9375rem 1rem 15.9375rem;
+    }
+
+    img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      object-fit: cover;
+      user-select: none;
+    }
+
+    h1,
+    h2 {
+      font-weight: inherit;
+    }
+
+    .sr-only {
+      border: none;
+      clip: rect(0, 0, 0, 0);
+      clip-path: inset(50%);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+
+    .advice {
+      background-color: var(--color-blue-900);
+      border-radius: .5rem;
+      display: flex;
+      flex-direction: column;
+      margin-left: auto;
+      margin-right: auto;
+      min-height: 16rem;
+      max-width: 33.75rem;
+      padding: 2.5rem 1.5rem 4rem;
+      position: relative;
+      text-align: center;
+    }
+
+    .advice__loader {
+      align-items: center;
+      backdrop-filter: blur(.25rem);
+      background-color: rgba(35, 43, 58, 0.95);
+      border-radius: inherit;
+      display: none;
+      inset: 0;
+      justify-content: center;
+      position: absolute;
+      z-index: 2;
+    }
+
+    .advice.loading .advice__loader {
+      display: flex;
+    }
+
+    .advice__loader::after {
+      content: '';
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+
+      background: conic-gradient(
+        from 0deg,
+        var(--color-green-300),
+        transparent
+      );
+
+      -webkit-mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - .375rem),
+        black calc(100% - .375rem)
+      );
+      mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - .375rem),
+        black calc(100% - .375rem)
+      );
+
+      animation: spin 1s linear infinite;
+
+      filter: drop-shadow(0 0 .375rem rgba(82, 255, 168, 0.4));
+      will-change: transform;
+    }
+
+    .advice__id {
+      color: var(--color-green-300);
+      font-size: .75rem;
+      letter-spacing: .1875rem;
+      margin-bottom: 1.375rem;
+      text-transform: uppercase;
+    }
+    .advice.error .advice__id {
+      display: none;
+    }
+
+    .advice__text {
+      font-size: 1.4375rem;
+      margin-bottom: 1.5rem;
+    }
+    .advice.error .advice__text {
+      display: none;
+    }
+    .advice__text::after {
+      content: close-quote;
+    }
+    .advice__text::before {
+      content: open-quote;
+    }
+
+    .advice__error {
+      align-items: center;
+      color: var(--color-error);
+      display: none;
+      flex: 1;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .advice.error .advice__error {
+      display: flex;
+    }
+
+    .advice__image {
+      width: 100%;
+    }
+
+    .advice__button {
+      align-items: center;
+      aspect-ratio: 1;
+      background-color: var(--color-green-300);
+      border: none;
+      border-radius: 50%;
+      bottom: 0;
+      display: flex;
+      height: 4rem;
+      justify-content: center;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, 50%);
+      transition: var(--transition);
+      z-index: 1;
+      width: 4rem;
+    }
+    .advice__button:not(:disabled) {
+      cursor: pointer;
+    }
+    .advice__button:focus-visible {
+      outline: .125rem dashed var(--color-blue-200);
+      outline-offset: .25rem;
+    }
+    .advice__button:hover {
+      box-shadow: 0 0 1.5rem 0 var(--color-green-300);
+    }
+    .advice.loading .advice__button {
+      bottom: 50%;
+      transform: translate(-50%, 50%);
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (min-width: 48rem) {
+      .advice {
+        padding: 3rem 3rem 4.5rem;
+      }
+
+      .advice__id {
+        font-size: .8125rem;
+        letter-spacing: .25rem;
+        margin-bottom: 1.4375rem;
+      }
+
+      .advice__text {
+        font-size: 1.6875rem;
+        margin-bottom: 2.4375rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      ::after,
+      ::before {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 <body>
+  <noscript>
+    For full functionality of this site it is necessary to enable JavaScript.
+    Here are the <a href="https://www.enable-javascript.com">
+    instructions how to enable JavaScript in your web browser</a>.
+  </noscript>
 
-  Advice #<!-- Advice ID goes here -->
+  <main aria-live="polite" class="advice" id="advice">
+    <h1 class="sr-only">Advice generator app</h1>
 
-  "<!-- Advice text goes here -->"
+    <div aria-label="Loading" class="advice__loader" role="status"></div>
+
+    <h2 class="advice__id"></h2>
+    <blockquote class="advice__text"></blockquote>
+    <p class="advice__error" role="alert"></p>
+
+    <picture>
+      <source
+        media="(min-width: 48rem)"
+        srcset="images/pattern-divider-desktop.svg"
+      >
+      <img
+        alt=""
+        class="advice__image"
+        draggable="false"
+        loading="lazy"
+        src="images/pattern-divider-mobile.svg"
+      >
+    </picture>
+
+    <button
+      aria-label="Generate a random advice"
+      class="advice__button"
+      type="button"
+    >
+      <img
+        alt=""
+        draggable="false"
+        loading="lazy"
+        src="images/icon-dice.svg"
+      >
+    </button>
+  </main>
   
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  <script>
+    'use strict';
+
+    const API_URL = 'https://api.adviceslip.com/advice';
+
+    const advice = document.getElementById('advice');
+    const adviceId = advice.querySelector('.advice__id');
+    const adviceText = advice.querySelector('.advice__text');
+    const adviceError = advice.querySelector('.advice__error');
+    const adviceButton = advice.querySelector('.advice__button');
+
+    async function loadAdvice() {
+      try {
+        displayLoader(true);
+
+        const response = await fetch(API_URL, { cache: 'no-cache' });
+        
+        if (!response.ok) {
+          throw new Error('HTTP_ERROR');
+        }
+
+        const result = await response.json();
+
+        if (!result?.slip) {
+          throw new Error('INVALID_DATA');
+        }
+
+        displayError(false);
+        updateAdvice(result.slip);
+      } catch (error) {
+        console.error(error);
+        
+        let message = 'Something went wrong. Please try again.';
+
+        switch (error.message) {
+          case 'HTTP_ERROR':
+            message = 'Failed to fetch advice. Please check the API.';
+            break;
+
+          case 'INVALID_DATA':
+            message = 'Received invalid data from the server.';
+            break;
+
+          default:
+            message = error.message || 'Unexpected error occurred.';
+        }
+
+        displayError(true, message);
+      } finally {
+        displayLoader(false);
+      }
+    }
+
+    function displayLoader(state) {
+      adviceButton.disabled = state;
+      advice.classList.toggle('loading', state);
+    }
+
+    function displayError(state, message) {
+      advice.classList.toggle('error', state);
+      if (message) {
+        adviceError.textContent = message;
+      }
+    }
+
+    function updateAdvice(slip) {
+      adviceId.textContent = `Advice #${slip.id}`;
+      adviceText.textContent = slip.advice;
+    }
+
+    loadAdvice();
+    adviceButton.addEventListener('click', loadAdvice);
+  </script>
 </body>
 </html>

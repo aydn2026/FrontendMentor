@@ -1,112 +1,132 @@
-# Frontend Mentor - Advice generator app solution
+Here’s a clean, professional `README.md` tailored specifically to your project (no unnecessary placeholders or React/Next.js references since your app is vanilla HTML/CSS/JS):
 
-This is a solution to the [Advice generator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+---
 
-## Table of contents
+# Frontend Mentor - Advice Generator App Solution
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+This is my solution to the [Advice Generator App challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db). The app fetches and displays random advice from an external API with a smooth and responsive UI.
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+---
 
 ## Overview
 
-### The challenge
+### The Challenge
 
 Users should be able to:
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Generate a new piece of advice by clicking the dice icon
+* View the optimal layout depending on their device's screen size
+* See hover and focus states for interactive elements
+* Generate a new piece of advice by clicking the dice button
+* See loading and error states when fetching data
+
+---
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![Screenshot](preview.png)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+---
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+* **Solution URL:** [https://your-solution-url.com](https://your-solution-url.com)
+* **Live Site URL:** [https://your-live-site-url.com](https://your-live-site-url.com)
 
-## My process
+---
 
-### Built with
+## My Process
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+### Built With
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+* Semantic HTML5
+* CSS custom properties
+* Flexbox
+* Mobile-first workflow
+* Vanilla JavaScript (ES6+)
+* Fetch API
 
-### What I learned
+---
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+### What I Learned
 
-To see how you can add code snippets, see below:
+While building this project, I improved my understanding of:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+* **Handling asynchronous API requests**
+* **Error handling in JavaScript**
+* **UI state management (loading, success, error)**
+
+Example of the fetch logic I implemented:
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+async function loadAdvice() {
+  try {
+    displayLoader(true);
+
+    const response = await fetch(API_URL, { cache: 'no-cache' });
+
+    if (!response.ok) {
+      throw new Error('HTTP_ERROR');
+    }
+
+    const result = await response.json();
+
+    if (!result?.slip) {
+      throw new Error('INVALID_DATA');
+    }
+
+    displayError(false);
+    updateAdvice(result.slip);
+
+  } catch (error) {
+    displayError(true, 'Something went wrong. Please try again.');
+  } finally {
+    displayLoader(false);
+  }
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+I also learned how to:
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+* Prevent cached API responses using `{ cache: 'no-cache' }`
+* Create a custom loader animation using pure CSS
+* Improve accessibility using ARIA roles and live regions
 
-### Continued development
+---
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+### Continued Development
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+In future projects, I plan to focus on:
 
-### Useful resources
+* Improving accessibility (ARIA and screen reader behavior)
+* Adding animations with better performance
+* Structuring JavaScript for scalability (modular patterns)
+* Writing cleaner and reusable UI components
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+---
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+### Useful Resources
+
+* [https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) – Helped me understand fetch and error handling
+* [https://css-tricks.com/](https://css-tricks.com/) – Great resource for layout and animation techniques
+
+---
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+* Frontend Mentor – [https://www.frontendmentor.io/profile/aydn2026](https://www.frontendmentor.io/profile/aydn2026)
+* GitHub – [https://github.com/aydn2026](https://github.com/aydn2026)
+* Twitter – [https://x.com/aydn2026](https://x.com/aydn2026)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+---
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+Thanks to the Frontend Mentor community for inspiration and shared solutions that helped me refine my approach.
 
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+---
+
+If you want, I can also:
+
+* Generate a **better project description for your portfolio**
+* Suggest **improvements to impress reviewers**
+* Or help you **deploy it (Netlify / Vercel / GitHub Pages)**
