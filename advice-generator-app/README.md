@@ -1,7 +1,3 @@
-Here’s a clean, professional `README.md` tailored specifically to your project (no unnecessary placeholders or React/Next.js references since your app is vanilla HTML/CSS/JS):
-
----
-
 # Frontend Mentor - Advice Generator App Solution
 
 This is my solution to the [Advice Generator App challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db). The app fetches and displays random advice from an external API with a smooth and responsive UI.
@@ -122,11 +118,3 @@ In future projects, I plan to focus on:
 ## Acknowledgments
 
 Thanks to the Frontend Mentor community for inspiration and shared solutions that helped me refine my approach.
-
----
-
-If you want, I can also:
-
-* Generate a **better project description for your portfolio**
-* Suggest **improvements to impress reviewers**
-* Or help you **deploy it (Netlify / Vercel / GitHub Pages)**
